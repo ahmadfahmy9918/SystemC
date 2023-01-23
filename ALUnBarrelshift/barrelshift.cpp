@@ -1,5 +1,4 @@
-// COE838 - Lab1 SystemC Intro
-// BarrelShift Unit Tutorial. 
+// BarrelShift Unit  
 //////////////////////////////////
 #include "barrelshift.h"
 
