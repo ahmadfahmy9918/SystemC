@@ -1,4 +1,3 @@
-// COE838 - Lab1 SystemC Intro
 // ALU Unit
 //////////////////////////////////
 
