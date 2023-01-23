@@ -1,6 +1,4 @@
-// COE838 - Lab1 SystemC Intro
-//////////////////////////////////
-//Testbench driver for ALU
+//Testbench driver for ALU and Barrel Shifter Module
 
 #include <systemc.h>
 #include "ALU.h"
@@ -30,26 +28,6 @@ sc_trace_file *tf;                 			    // Create VCD file for tracing
 
 	 a1 = new ALU("ALU");                                //Create testbench Device Under Test (DUT)
 	(*a1) (clock, OP, A, data_out_and_B, alu_out);
-	
-	//B= data_out;
-
-	/*
-   	 alu.A(A);                                      
-   	 //alu.B(B);
-	 //alu.B(barrel.dout);
-   	 alu.clock(clock);
-	 alu.alu_out(alu_out);
-	 alu.OP(OP);
-
-	 //barrel.dout(B);
-	
-	 //barrel.dout(alu.B);
-	 alu.B(data_out);
-*/
-
-	//sc_bind(barrel.dout, alu.B);
-
-/////////////////////////ADD and initialize the vars from barrelshift
 
        // Create wave file and trace the signals executing
 	tf = sc_create_vcd_trace_file("trace_file");
@@ -73,9 +51,8 @@ sc_trace_file *tf;                 			    // Create VCD file for tracing
 	en.write(0); //initialize
 	left_in.write(0); right_in.write(0);
 	left_right.write(0); 
-    OP.write(0); //initialize
+        OP.write(0); //initialize
 	A.write(0);
-	//B.write(0);
 	sc_start(20, SC_NS);
 
 	en.write(0); //enable off
@@ -89,7 +66,6 @@ sc_trace_file *tf;                 			    // Create VCD file for tracing
 	
 	OP.write(0); //SUBTRACTION
 	A.write(20);
-	//B.write(10);
 	sc_start(20, SC_NS);
 
 
@@ -97,7 +73,6 @@ sc_trace_file *tf;                 			    // Create VCD file for tracing
 	left_in.write(1); right_in.write(0);
 	left_right.write(0); 
 	OP.write(1); //ADDITION
-	//alu.B(barrel.dout);
 	A.write(10);
 	sc_start(20, SC_NS);
 
@@ -106,7 +81,6 @@ sc_trace_file *tf;                 			    // Create VCD file for tracing
 	left_in.write(1); right_in.write(0);
 	left_right.write(0); 
 	A.write(20);
-	//B.write(barrel.dout);
 	sc_start(20, SC_NS);
 
 
@@ -125,7 +99,6 @@ sc_trace_file *tf;                 			    // Create VCD file for tracing
 	A.write(20);
 	sc_start(20, SC_NS);
 	
-
    	sc_close_vcd_trace_file(tf);
 }
 
